@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Atomo.h"
-#include "Operador.h"
-#include "PilaBooleana.h"
-#include "LectorArchivos.h"
+#include "src/Atomo.h"
+#include "src/Operador.h"
+#include "src/PilaBooleana.h"
+#include "src/LectorArchivos.h"
 
 using namespace std;
 

@@ -1,8 +1,11 @@
-#ifndef PARTEREGLA_H
-#define PARTEREGLA_H
+#ifndef RULEPART_H
+#define RULEPART_H
 
-class ParteRegla{
-	
+#include <string>
+
+class RulePart{
+public:
+	std::string virtual toString()const =0;
 };
 
 #endif

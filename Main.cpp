@@ -65,7 +65,7 @@ int main(){
 	
 	cout << "Negación: " << neg->toString() << endl;
 	cout << "Conjunción: "<< con->toString() << endl;
-	cout << "Disyunción: "<< dis->toString() << endl;
+	//cout << "Disyunción: "<< dis->toString() << endl;
 
 	return 0;
 }

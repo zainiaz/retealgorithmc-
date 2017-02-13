@@ -3,6 +3,6 @@
 *.o
 *.out
 *.bin
-*gch
+*.gch
 Main.cpp
 main.cpp

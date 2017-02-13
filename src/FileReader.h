@@ -1,18 +1,20 @@
-#ifndef LECTOR_ARCHIVOS_H
-#define LECTOR_ARCHIVOS_H
+#ifndef FILE_READER_H
+#define FILE_READER_H
 
 #include <string>
 #include <fstream>
 
 using namespace std;
 
-class LectorArchivos{
+class FileReader{
 	private:
-		fstream archivo;		
+		ifstream file;
+		string filename;
 	public:
-		LectorArchivos(string);
-		string leerCadena();
-		void cierra();
+		FileReader(string);
+		string getLine();
+		bool openFile();				
+		void closeFile();
 };
 
 #endif

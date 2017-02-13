@@ -25,7 +25,7 @@ bool WorkingMemory::verifyPresence(const Atom& atm) const{
 	return (verifyNegated(atm) || verifyAffirmed(atm));
 }
 
-iterator_v WorkingMemory::search(iterator_v begin, iterator_v end,const Atom& atm)const{
+iterator_vector WorkingMemory::search(iterator_vector begin, iterator_vector end,const Atom& atm)const{
 	return find(begin,end,atm);
 }
 
@@ -38,7 +38,7 @@ bool WorkingMemory::verifyNegated(const Atom& atm)const{
 }
 
 Atom* WorkingMemory::returnAtom(const Atom& atm)const{
-	iterator_v itA, itN;
+	iterator_vector itA, itN;
 	
 	itA = search(affirmed->begin(),affirmed->end(),atm);
 	itN = search(negated->begin(),negated->end(),atm);
@@ -54,7 +54,7 @@ Atom* WorkingMemory::returnAtom(const Atom& atm)const{
 
 string WorkingMemory::toString()const{
 	string ret_var = "\nWorking memory\nAffirmed: [ ";
-	iterator_v it;
+	iterator_vector it;
 	
 	it = affirmed->begin();
 	while(it != affirmed->end()){

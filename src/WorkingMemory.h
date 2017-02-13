@@ -6,14 +6,14 @@
 #include "Atom.h"
 
 using namespace std;
-typedef vector<Atom>::iterator iterator_v;
+typedef vector<Atom>::iterator iterator_vector;
 
 class WorkingMemory{
 
 private:
 	vector<Atom> *negated;
 	vector<Atom> *affirmed;
-	iterator_v search(iterator_v, iterator_v, const Atom&) const;
+	iterator_vector search(iterator_vector, iterator_vector, const Atom&) const;
 
 public:
 	WorkingMemory();

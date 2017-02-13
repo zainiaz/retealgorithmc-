@@ -13,7 +13,7 @@ public:
 
 class Negacion : public Operador{
 public:
-	string toString();
+	string toString() override;
 };
 
 class Binario : public Operador{
@@ -22,7 +22,7 @@ private:
 	
 public:
 	Binario(bool conj);
-	string toString();
+	string toString() override;
 };
 
 #endif

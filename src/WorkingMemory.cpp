@@ -1,88 +1,73 @@
-#include "MemoriaTrabajo.h"
+#include "WorkingMemory.h"
 #include <algorithm>
 
-MemoriaTrabajo::MemoriaTrabajo(){
-	afirmados = new vector<Atomo>();
-	negados = new vector<Atomo>();
+WorkingMemory::WorkingMemory(){
+	affirmed = new vector<Atom>();
+	negated = new vector<Atom>();
 }
 
-MemoriaTrabajo::~MemoriaTrabajo(){
-	delete afirmados;
-	delete negados;
+WorkingMemory::~WorkingMemory(){
+	delete affirmed;
+	delete negated;
 }
 
-void MemoriaTrabajo::guardaAtomo(const Atomo& atm){
-	if(!fueNegado(atm) && !fueAfirmado(atm))
+void WorkingMemory::saveAtom(const Atom& atm){
+	if(!verifyNegated(atm) && !verifyAffirmed(atm))
 	{
-		if(atm.getEstado())
-			afirmados -> push_back(atm);
+		if(atm.getState())
+			affirmed -> push_back(atm);
 		else
-			negados -> push_back(atm);
+			negated -> push_back(atm);
 	}
 }
 
-bool MemoriaTrabajo::presente(const Atomo& atm) const{
-	return (fueNegado(atm) || fueAfirmado(atm));
+bool WorkingMemory::verifyPresence(const Atom& atm) const{
+	return (verifyNegated(atm) || verifyAffirmed(atm));
 }
 
-iterador MemoriaTrabajo::busca(iterador inicio, iterador fin,const Atomo& atm)const{
-	return find(inicio,fin,atm);
+iterator_v WorkingMemory::search(iterator_v begin, iterator_v end,const Atom& atm)const{
+	return find(begin,end,atm);
 }
 
-bool MemoriaTrabajo::fueAfirmado(const Atomo& atm)const{
-	return busca(afirmados->begin(),afirmados->end(),atm) != afirmados->end();
+bool WorkingMemory::verifyAffirmed(const Atom& atm)const{
+	return search(affirmed->begin(),affirmed->end(),atm) != affirmed->end();
 }
 
-bool MemoriaTrabajo::fueNegado(const Atomo& atm)const{
-	return busca(negados->begin(),negados->end(),atm) != negados->end();
+bool WorkingMemory::verifyNegated(const Atom& atm)const{
+	return search(negated->begin(),negated->end(),atm) != negated->end();
 }
 
-Atomo* MemoriaTrabajo::recupera(const Atomo& atm)const{
-	iterador itA, itN;
+Atom* WorkingMemory::returnAtom(const Atom& atm)const{
+	iterator_v itA, itN;
 	
-	itA = busca(afirmados->begin(),afirmados->end(),atm);
-	itN = busca(negados->begin(),negados->end(),atm);
+	itA = search(affirmed->begin(),affirmed->end(),atm);
+	itN = search(negated->begin(),negated->end(),atm);
 	
-	if(itA != afirmados->end()) 
-		return new Atomo(*itA);	
+	if(itA != affirmed->end()) 
+		return new Atom(*itA);	
 
-	if(itN != negados->end()) 
-		return new Atomo(*itN);
+	if(itN != negated->end()) 
+		return new Atom(*itN);
 
 	return NULL;
 }
 
-/*Atomo* MemoriaTrabajo::recupera(string desc){
-	iterador itA, itN;
-	Atomo atm(desc,true,true);
-	itA = busca(afirmados->begin(),afirmados->end(),atm);
-	itN = busca(negados->begin(),negados->end(),atm);
+string WorkingMemory::toString()const{
+	string ret_var = "\nWorking memory\nAffirmed: [ ";
+	iterator_v it;
 	
-	if(itA != afirmados->end()) 
-		return *itA;	
-
-	if(itN != negados->end()) 
-		return *itN;
-
-	return NULL;
-}*/
-
-string MemoriaTrabajo::toString()const{
-	string retorno = "\nMemoria de Trabajo\nAfirmados: [ ";
-	iterador it;
-	
-	it = afirmados->begin();
-	while(it != afirmados->end()){
-		retorno += (*it).toString()+" ";
+	it = affirmed->begin();
+	while(it != affirmed->end()){
+		ret_var += (*it).toString()+" ";
 		it++;
 	}
 
-	retorno = retorno+"]\nNegados: [ ";
+	ret_var = ret_var+"]\nNegated: [ ";
 
-	it = negados->begin();
-	while(it != negados->end()){
-		retorno += (*it).toString()+" ";
+	it = negated->begin();
+	while(it != negated->end()){
+		ret_var += (*it).toString()+" ";
 		it++;
 	}
-	return retorno+"]";
+	return ret_var+"]";
 }

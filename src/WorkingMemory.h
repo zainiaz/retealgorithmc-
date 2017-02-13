@@ -1,29 +1,28 @@
-#ifndef MEMORIATRABAJO_H
-#define MEMORIATRABAJO_H
+#ifndef WORKING_MEMORY_H
+#define WORKING_MEMORY_H
 
 #include <vector>
 #include <string>
-
-#include "Atomo.h"
+#include "Atom.h"
 
 using namespace std;
-typedef vector<Atomo>::iterator iterador;
+typedef vector<Atom>::iterator iterator_v;
 
-class MemoriaTrabajo{
+class WorkingMemory{
 
 private:
-	vector<Atomo> *negados;
-	vector<Atomo> *afirmados;
-	iterador busca(iterador, iterador, const Atomo&) const;
+	vector<Atom> *negated;
+	vector<Atom> *affirmed;
+	iterator_v search(iterator_v, iterator_v, const Atom&) const;
 
 public:
-	MemoriaTrabajo();
-	~MemoriaTrabajo();
-	void guardaAtomo(const Atomo& atm);
-	bool presente(const Atomo& atm) const;
-	bool fueAfirmado(const Atomo& atm) const;
-	bool fueNegado(const Atomo& atm) const;
-	Atomo* recupera(const Atomo& atm) const;
+	WorkingMemory();
+	~WorkingMemory();
+	void saveAtom(const Atom& atm);
+	bool verifyPresence(const Atom& atm) const;
+	bool verifyAffirmed(const Atom& atm) const;
+	bool verifyNegated(const Atom& atm) const;
+	Atom* returnAtom(const Atom& atm) const;
 	string toString()const; 
 };
 

@@ -45,11 +45,11 @@ string Atom::toString(){
 } 
 
 bool Atom::seeEquality(const Atom& atm)const{
-	return !desc.compare(atom.desc);
+	return !desc.compare(atm.getDesc());
 }
 
 bool Atom::seeTruth(const Atom& atm)const{
-	return state && atm.state();
+	return state && atm.getState();
 }
 
 bool Atom::operator == (const Atom& atm)const{

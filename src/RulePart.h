@@ -5,7 +5,7 @@
 
 class RulePart{
 public:
-	std::string virtual toString()const =0;
+	virtual std::string toString()=0;
 };
 
 #endif

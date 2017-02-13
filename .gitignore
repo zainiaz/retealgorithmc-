@@ -1,5 +1,7 @@
 #   Source code   #
 ###################
 *.o
+*.out
+*.bin
 Main.cpp
 main.cpp

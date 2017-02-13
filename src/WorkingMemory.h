@@ -6,19 +6,19 @@
 #include "Atom.h"
 
 using namespace std;
-typedef vector<Atom>::iterator iterator_vector;
+typedef vector<Atom>::iterator itr_vector;
 
 class WorkingMemory{
 
 private:
 	vector<Atom> *negated;
 	vector<Atom> *affirmed;
-	iterator_vector search(iterator_vector, iterator_vector, const Atom&) const;
+	itr_vector search(itr_vector, itr_vector, const Atom&) const;
 
 public:
 	WorkingMemory();
 	~WorkingMemory();
-	void saveAtom(const Atom& atm);
+	void addAtom(const Atom& atm);
 	bool verifyPresence(const Atom& atm) const;
 	bool verifyAffirmed(const Atom& atm) const;
 	bool verifyNegated(const Atom& atm) const;

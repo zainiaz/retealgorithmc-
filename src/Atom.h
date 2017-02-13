@@ -1,33 +1,34 @@
-#ifndef ATOMO_H_INCLUDED
-#define ATOMO_H_INCLUDED
+#ifndef ATOM_H_INCLUDED
+#define ATOM_H_INCLUDED
 #include <string>
 #include <iostream>
-#include "ParteRegla.h"
+#include "RulePart.h"
 
 using namespace std;
 
-class Atomo: public ParteRegla{
+class Atom: public RulePart{
 	public:
-		Atomo(string, bool, bool);
-		Atomo(Atomo&);
-		string ToString();
-		int GetHashCode();
-		bool Equals(Atomo&);
-		bool verIgualdad(Atomo&);
-		bool verVerdad(Atomo&);
+		Atom(string, bool, bool);
+		Atom(const Atomo&);
 
-	public:
-		bool estado;
-		bool objetivo;
-		string desc;
-
-		string getDesc();
-		bool getEstado();
-		bool getObjetivo();
-
+		string toString() override;
+		
+		bool seeEquality(const Atomo&)const;
+		bool seeTruth(const Atomo&)const;
+		bool operator == (const Atomo&)const;
+		
+		string getDesc()const;
+		bool getState()const;
+		bool getGoal()const;
+		
 		void setDesc(string);
-		void setEstado(bool);
-		void setObjetivo(bool);
+		void setState(bool);
+		void setGoal(bool);
+
+	private:
+		bool state; 
+		bool goal;
+		string desc;
 };
 
 #endif

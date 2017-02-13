@@ -9,13 +9,13 @@ using namespace std;
 class Atom: public RulePart{
 	public:
 		Atom(string, bool, bool);
-		Atom(const Atomo&);
+		Atom(const Atom&);
 
 		string toString() override;
 		
-		bool seeEquality(const Atomo&)const;
-		bool seeTruth(const Atomo&)const;
-		bool operator == (const Atomo&)const;
+		bool seeEquality(const Atom&)const;
+		bool seeTruth(const Atom&)const;
+		bool operator == (const Atom&)const;
 		
 		string getDesc()const;
 		bool getState()const;

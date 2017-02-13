@@ -1,61 +1,57 @@
 #include <iostream>
 #include <string>
-#include "Atomo.h"
+#include "Atom.h"
 
 using namespace std;
 
-Atomo::Atomo(Atomo &otro){
-	desc = otro.getDesc();
-	estado = otro.getEstado() & true;
-	objetivo = otro.objetivo & true;
+Atom::Atom(const Atom &other){
+	desc = other.desc;
+	state = other.state;
+	goal = other.goal;
 }
 
-Atomo::Atomo(string desc, bool estado, bool objetivo){
+Atom::Atom(string desc, bool state, bool goal){
 	this->desc = desc;
-	this->estado = estado & true;
-	this->objetivo = objetivo & true;
+	this->state = state;
+	this->goal = goal;
 }
 
-string Atomo::getDesc(){
+string Atom::getDesc()const{
 	return desc;
 }
 
-void Atomo::setDesc(string desc){
+void Atom::setDesc(string desc){
 	this->desc = desc;
 }
 
-bool Atomo::getEstado(){
-	return estado;
+bool Atom::getState()const{
+	return state;
 }
 
-void Atomo::setEstado(bool estado){
-	this->estado = estado;
+void Atom::setState(bool state){
+	this->state = state;
 }
 
-bool Atomo::getObjetivo(){
-	return objetivo;
+bool Atom::getGoal()const{
+	return goal;
 }
 
-void Atomo::setObjetivo(bool obj){
-	objetivo = obj;
+void Atom::setGoal(bool goal){
+	this->goal = goal;
 }
 
-string Atomo::ToString() {
-	return string(estado?"":"!") + string(objetivo?"*":"") + desc;
+string Atom::toString(){
+	return string(state?"":"!") + string(goal?"*":"") + desc;
 } 
 
-int Atomo::GetHashCode() {
-	return 10;
+bool Atom::seeEquality(const Atom& atm)const{
+	return !desc.compare(atom.desc);
 }
 
-bool Atomo::Equals(Atomo &obj) {
-	return (obj.getEstado() == estado) && !(desc.compare(obj.getDesc()));
+bool Atom::seeTruth(const Atom& atm)const{
+	return state && atm.state();
 }
 
-bool Atomo::verIgualdad(Atomo &aTmp){
-	return !desc.compare(aTmp.getDesc());
-}
-
-bool Atomo::verVerdad(Atomo &aTmp){
-	return estado && aTmp.getEstado();
+bool Atom::operator == (const Atom& atm)const{
+	return !desc.compare(atm.desc) && (state == atm.state);
 }

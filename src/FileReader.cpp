@@ -1,40 +1,30 @@
-#include "LectorArchivos.h"
+#include "FileReader.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 
 using namespace std;
 
-LectorArchivos::LectorArchivos(string nomArch){
-	this->archivo.open(nomArch.c_str(), ios::out | ios::in);
-	if(!this->archivo.is_open()){
-		string aux = nomArch;
-		while(!this->archivo.is_open()){
-			cout << "No se pudo localizar el archivo: " << aux  << endl;
-			cout << "Ingresa de nuevo el nombre del archivo para leer: ";
-			cin >> aux;
-			this->archivo.open(aux.c_str(), ios::out | ios::in);
-		}
-
-		cout << "El archivo: " << aux << " ";
-	}
-	else cout << "El archivo: " << nomArch << " ";
-
-	cout << "se ha abierto correctamente!" << endl << endl;
+FileReader::FileReader(string name){
+	this->filename = name;
 }
 
-string LectorArchivos::leerCadena(){
+string FileReader::getLine(){
 	string tmp;
 
-	if(getline(archivo, tmp)){
+	if(getline(file, tmp)){
 		return tmp;
 	}
 	else{
-		cout << "Ya alcanzaste el fin de archivo. Imposible leer más!" << endl << endl;
 		return string("EOF");
 	}
 }
 
-void LectorArchivos::cierra(){
-	this->archivo.close();
+void FileReader::closeFile(){
+	this->file.close();
+}
+
+bool FileReader::openFile(){
+	this->file.open(filename.c_str());
+	return file.is_open();
 }

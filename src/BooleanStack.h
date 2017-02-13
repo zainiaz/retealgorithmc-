@@ -1,17 +1,15 @@
-#ifndef PILA_BOOLEANA_H
-#define PILA_BOOLEANA_H
+#ifndef BOOLEAN_STACK_H
+#define BOOLEAN_STACK_H
 #include <vector>
 
-using namespace std;
-
-class PilaBooleana{
+class BooleanStack{
 	private:
-		vector<bool> datos;
+		std::vector<bool> data;
 	
 	public:
-		PilaBooleana();
-		void anular();
-		bool vacia();
+		BooleanStack();
+		void clear();
+		bool empty();
 		bool top();
 		bool pop();
 		void push(bool);

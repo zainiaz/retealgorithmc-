@@ -1,39 +1,38 @@
-#include <iostream>
-#include "PilaBooleana.h"
+#include "BooleanStack.h"
 
 using namespace std;
 
-PilaBooleana::PilaBooleana(){
+BooleanStack::BooleanStack(){
 	;
 }
 
-void PilaBooleana::anular(){
-	datos.clear();
+void BooleanStack::clear(){
+	data.clear();
 }
 
-bool PilaBooleana::vacia(){
-	return (bool)datos.empty();
+bool BooleanStack::empty(){
+	return data.empty();
 }
 
-bool PilaBooleana::top(){
-	if(this->vacia()) return false;
-	else return (bool)datos.at(datos.size() - 1);
+bool BooleanStack::top(){
+	if(this->empty()) return false;
+	else return data.at(data.size() - 1);
 }
 
-bool PilaBooleana::pop(){
-	if(!this->vacia()) {
-		bool tmp = datos.at(datos.size() - 1);
-		datos.pop_back();
+bool BooleanStack::pop(){
+	if(!this->empty()) {
+		bool tmp = data.at(data.size() - 1);
+		data.pop_back();
 		return tmp;
 	}
 	
 	else return false;
 }
 
-void PilaBooleana::push(bool valor){
-	datos.push_back(valor);
+void BooleanStack::push(bool value){
+	data.push_back(value);
 }
 
-int PilaBooleana::size(){
-	return datos.size();
+int BooleanStack::size(){
+	return data.size();
 }

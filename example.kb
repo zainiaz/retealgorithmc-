@@ -1,0 +1,13 @@
+<rule> <conditional> <atom> REALIZA_EXTRACCION_DE_MINERALES </atom> <atom> REALIZA_RESTAURACION_DE_MINAS </atom> <disjunction/> </conditional> <conclusion> <atom> MINERO </atom> </conclusion> </rule>
+
+<rule> <conditional> <atom> REALIZA_ACTIVIDAD_FINITA </atom> <atom> RECIBE_PAGO_POR_ACTIVIDAD_HECHA </atom> <conjunction/> <atom> MINERO </atom> <disjunction/> </conditional> <conclusion> <targetAtom> TRABAJO_POR_OBRA </targetAtom> </conclusion> </rule>
+
+<rule> <conditional> <atom> RECIBE_PAGO_POR_TIEMPO_TRABAJADO </atom> </conditional> <conclusion> <atom> TRABAJO_POR_TIEMPO </atom> </conclusion> </rule>
+
+<rule> <conditional> <atom> TRABAJO_POR_TIEMPO </atom> <atom> TRABAJA_PERIODO_UNICO </atom> <atom> TRABAJA_PERIODO_DEFINIDO </atom> <conjunction/> <conjunction/> </conditional> <conclusion> <atom> TIEMPO_UNICO_DEFINIDO </atom> </conclusion> </rule>
+
+<rule> <conditional> <atom> TRABAJO_POR_TIEMPO </atom> <atom> TRABAJA_PERIODO_DEFINIDO </atom> <negation/> <conjunction/> </conditional> <conclusion> <atom> TIEMPO_CONTINUO </atom> </conclusion> </rule>
+
+<rule> <conditional> <atom> TIEMPO_UNICO_DEFINIDO </atom> <atom> MINERO </atom> <atom> ES_SUSTITUTO_TEMPORAL </atom> <disjunction/> <disjunction/> </conditional> <conclusion> <targetAtom> TIEMPO_DETERMINADO </targetAtom> </conclusion> </rule>
+
+<rule> <conditional> <atom> TIEMPO_CONTINUO </atom> <atom> MINERO </atom> <disjunction/> </conditional> <conclusion> <targetAtom> TIEMPO_INDETERMINADO </targetAtom> </conclusion> </rule>

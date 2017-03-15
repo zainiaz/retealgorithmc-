@@ -28,3 +28,12 @@ bool FileReader::openFile(){
 	this->file.open(filename.c_str());
 	return file.is_open();
 }
+
+string FileReader::status(){
+	string return_string = "FILE NAME: " + filename + "\nOPEN: " + boolToString(this->file.is_open()) + "\n";
+	return return_string;
+}
+
+string FileReader::boolToString(bool value){
+	return value? "true" : "false";
+}

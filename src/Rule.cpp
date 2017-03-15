@@ -78,7 +78,7 @@ bool Rule::testCondition(WorkingMemory &wm){
 
 			if( wm.verifyPresence(*memory_atom) ){
 				bool_stack->push(
-							memory_atom->seeTruth((*(Atom*)memory_atom))
+					memory_atom->seeTruth((*(Atom*)memory_atom))
 					);
 			}
 		}
